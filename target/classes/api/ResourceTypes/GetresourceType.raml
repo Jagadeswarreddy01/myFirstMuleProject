@@ -1,0 +1,71 @@
+#%RAML 1.0 ResourceType
+
+
+get:
+  
+  queryParameters:
+    From:
+      type: string
+      example : “Nandyal”
+    Destination:
+      type : string
+      example : “Chennampalli”
+    DepartureDate:
+      type : string
+      minLength : 10
+      maxLength : 15
+      example : “2025-12-04”
+    Fight-class:
+        enum:
+        - Business
+        - First class
+        - Economy
+    random_field?:
+      example : “ok”   
+              
+  responses:
+    200:
+      body:
+        application/json:
+          description : Array of Flights
+          type : flightArray
+          
+          example : !include ../Examples/FlightExample.raml
+              
+    400:
+      body:
+        application/json :
+          description : Bad request Error.
+          example :
+              {
+                message : “Bad request”
+              }
+    401: 
+      body:
+        application/json :
+          description : ACCESS DENIED.
+          example : {
+                    message : “ACCESS DENIED”
+                  }
+    404:
+      body:
+        application/json :
+          description : resource not found.
+          example : {
+                      message : “resource not found.”
+                  }
+    405:
+      body:
+        application/json :
+          description : method not allowed.
+          example : {
+                      message : “method not allowed” 
+                  }
+
+    500: 
+      body:
+        application/json :
+          description : Internal server error.
+          example : {
+                    "message" : “Internal server error”
+                    }

@@ -1,0 +1,32 @@
+{
+  "configs": [
+    "airport-system-api.xml"
+  ],
+  "secureProperties": [],
+  "supportedJavaVersions": [],
+  "redeploymentEnabled": true,
+  "name": "com.mycompany:airport:1.0.0-SNAPSHOT",
+  "minMuleVersion": "4.9.0",
+  "requiredProduct": "MULE_EE",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "exportedPackages": [],
+      "exportedResources": [
+        "log4j2.xml",
+        "airport-system-api.xml",
+        "config.properties",
+        "api/traits/headersC.raml",
+        "api/dataTypes/dataType.raml",
+        "api/Library/library.raml",
+        "api/ResourceTypes/GetresourceType.raml",
+        "api/airport-system-api.raml",
+        "api/Examples/FlightExample.raml"
+      ]
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  }
+}
