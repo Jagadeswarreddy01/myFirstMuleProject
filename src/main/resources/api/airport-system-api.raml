@@ -1,0 +1,108 @@
+#%RAML 1.0
+title: Airport-System-api
+description : Airport system API
+version: 1.0.0
+
+uses:
+  lib : /Library/library.raml
+
+    
+  
+
+/flights:
+  is : lib.common-Headers
+  type : lib.Collection
+  get:
+    queryParameters:
+      GengNo:
+        type : number
+        required : false
+        example : 33
+
+  post:
+    description: A flight is created
+    headers:
+      client_id :
+        type : string
+        example: “It is clientId"
+      client_Secret:
+        type: string
+        example : “It is clientSecret” 
+    body:
+      application/json:
+        description : “Fights Information “
+        example : {
+                  “fightNo” : “22”,
+                  “id” : 40
+                  }
+
+    responses:
+      201:
+        body:
+          application/json:
+            description : entry is created in flights.
+            type : lib.flightArray
+            example : !include Examples/FlightExample.raml
+                
+      400:
+        body:
+          application/json :
+            description : Bad request Error.
+            example :
+               {
+                  message : “Bad request”
+               }
+      401: 
+       body:
+         application/json :
+          description : ACCESS DENIED.
+          example : {
+                      message : “ACCESS DENIED”
+                    }
+      404:
+        body:
+         application/json :
+          description : resource not found.
+          example : {
+                        message : “resource not found.”
+                    }
+      405:
+        body:
+         application/json :
+           description : method not allowed.
+           example : {
+                        message : “method not allowed” 
+                    }
+
+      500: 
+        body:
+         application/json :
+            description : Internal server error.
+            example : {
+                      message : “Internal server error”
+                      }
+  /booking:
+    /{id}:
+      uriParameters:
+        id:
+          type : number
+          maximum : 12
+          minimum : 2  
+
+      type : lib.Collection
+      get:    
+      
+      post:
+
+
+
+
+/booking:
+  is : lib.common-Headers
+  type : lib.Collection
+  get:
+  delete:
+
+      
+
+                          
